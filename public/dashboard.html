@@ -1,0 +1,161 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>P&aacute;gina de registro de nuevos clientes</title>
+    <link rel="import" href="init.html">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <script>requirejs(["app/dashboard"])</script>
+</head>
+<body>
+    <div class="container">
+        <div class="well col-lg-offset-1 col-lg-10">
+            <p id="indicaciones">Para realizar su registro por favor proporcione los datos que se le solicitan a continuaci&oacute;n</p>
+            <form>
+                <fieldset>
+                    <legend>Datos de usuario</legend>
+                    <div class="form-group">                        
+                        <div class="col-lg-4">
+                            <label for="nombre_propietario">Nombre</label>
+                            <input type="text" id="nombre_propietario" required>
+                        </div>
+                        <div class="col-lg-4">
+                            <label for="apellido_paterno_propietario">Ap. paterno</label>
+                            <input type="text" id="apellido_paterno_propietario" required>
+                        </div>
+                        <div class="col-lg-4">
+                            <label for="apellido_materno_propietario">Ap. materno</label>
+                            <input type="text" id="apellido_materno_propietario" required>
+                        </div>
+                    </div>
+
+                    <legend>Datos del domicilio a proteger</legend>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label for="domicilio">Direcci&oacute;n</label>
+                            <textarea id="domicilio" cols="5" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="delegacion">Delegacion</label>
+                            <select id="delegacion" required>
+                                <option value="1">&Aacute;lvaro Obreg&oacute;n</option>
+                                <option value="2">Azcapotzalco</option>
+                                <option value="3">Benito Ju&aacute;rez</option>
+                                <option value="4">Coyoac&aacute;n</option>
+                                <option value="5">Cuajimalpa de Moralos</option>
+                                <option value="6">Cuauht&eacute;moc</option>
+                                <option value="7">Gustavo A. Madero</option>
+                                <option value="8">Iztacalco</option>
+                                <option value="9">Iztapalapa</option>
+                                <option value="10">Magdalena Contreras</option>
+                                <option value="11">Miguel Hidalgo</option>
+                                <option value="12">Milpa Alta</option>
+                                <option value="13">Tl&aacute;huac</option>
+                                <option value="14">Tlalpan</option>
+                                <option value="15">Venustiano Carranza</option>
+                                <option value="16">Xochimilco</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="colonia">Colonia</label>
+                            <input type="text" id="colonia" required>
+                        </div>
+                    </div>      
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label for="telefono">Telefono</label>
+                            <input type="tel" id="telefono" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="telefono_en_domicilio">Este telefono se encuentra en el domicilio*</label>
+                            <select id="telefono_en_domicilio" required>
+                                <option value="1">S&iacute;</option>
+                                <option value="0">No</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <p>
+                                (*) De preferencia debera proporcionar el tel&eacute;fono 
+                                ubicado en el domicilio que desea proteger
+                            </p>
+                        </div>
+                    </div>
+
+                    <legend>Tipo de cliente</legend>
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label for="tipo">El domicilio que deseo proteger es</label>
+                            <select id="tipo" required>
+                                <option value="PARTICULAR">Una casa particular</option>
+                                <option value="EMPRESA">Un local comercial</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div id="panelDatosEstablecimiento" class="no-visible">
+                        <legend>Datos del local comercial</legend>
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label for="nombre_establecimiento">Nombre</label>
+                                <input type="text" id="nombre_establecimiento">
+                            </div>
+                            <div class="form-group">
+                                <label for="nombre_encargado">Encargado</label>
+                                <input type="text" id="nombre_encargado">
+                            </div>
+                        </div>
+                    </div>
+
+                    <legend>Datos de usuario</legend>
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label id="usuario">Usuario</label>
+                            <input type="text" id="usuario" required>
+                            <input type="button" id="verificar_usuario" value="Verificar disponibilidad">
+                        </div>
+                        <div class="form-group">
+                            <label id="password">Contrase&ntilde;a</label>
+                            <input type="password" id="password" required>
+                        </div>
+                        <div class="form-group">
+                            <label id="pregunta_secreta">Pregunta secreta</label>
+                            <input type="text" id="pregunta_secreta" required>
+                        </div>
+                        <div class="form-group">
+                            <label id="respuesta_secreta">Respuesta</label>
+                            <input type="text" id="respuesta_secreta" required>
+                        </div>
+                        <div class="form-group">
+                            <p>
+                                La pregunta secreta se utiliza para recuperar su cuenta
+                                en caso de que olvide su contrase&ntilde;a
+                            </p>
+                        </div>
+                    </div>
+
+                    <legend>Envio de mensajes</legend>
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <p>
+                                Para activar las notificaciones es necesario instalar
+                                la aplicaci&oacute;n <a target="_blank" href="https://telegram.org/">Telegram</a>
+                                porteriormente debera agregar al usuario 
+                                <a target="_blank" href="https://telegram.me/ursa_user_bot">@ursa_user_bot</a>,
+                                este usuario le indicar&aacute; un c&oacute;digo el cual debe 
+                                escribir a continuaci&oacute;n
+                            </p>
+                        </div>
+                        <div class="form-group">
+                            <label for="input">C&oacute;digo</label>
+                            <input type="text" placeholder="Ejemplo: 204146908">
+                        </div>
+                    </div>
+                </fieldset>
+                <center>
+                    <input type="button" class="btn btn-primary" value="Registrar mis datos">
+                </center>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

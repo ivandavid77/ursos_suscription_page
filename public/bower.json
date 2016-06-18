@@ -1,0 +1,22 @@
+{
+  "name": "public",
+  "homepage": "https://github.com/ivandavid77/ursos_suscription_page",
+  "authors": [
+    "Ivan David Barron Baez <ivandavid77@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "requirejs-plugins": "^1.0.3",
+    "bootstrap": "^3.3.6"
+  }
+}

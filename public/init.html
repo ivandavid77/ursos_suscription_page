@@ -1,0 +1,18 @@
+<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="bower_components/requirejs-plugins/lib/require.js"></script>
+<script>
+requirejs.config({
+  waitSeconds : 120,
+  baseUrl : 'bower_components',
+  paths : {
+    'app' : '../js/app',
+    'async' : 'requirejs-plugins/src/async',
+    'jquery' : 'jquery/dist/jquery',
+    //'sockjs' : 'sockjs-client/dist/sockjs.min',
+    'config' : '../js/config',
+    'servidor' : '../js/servidor',
+  }
+});
+</script>

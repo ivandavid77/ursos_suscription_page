@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>URSA :: Solici&oacute;n de Seguridad</title>
+    <link rel="import" href="init.html">
+    <link rel="stylesheet" href="css/index.css">
+    <script>requirejs(["app/index"])</script>
+</head>
+<body>
+    <div id="modalOverlay" class="no-visible"></div>
+    <div id="modalResult" class="no-visible">
+    <center>
+        <h6></h6>
+        <input id="modalResultButton" type="button" value="Aceptar">
+    </center>
+    </div>
+
+    <div class="container">
+        <h1>URSA</h1>
+        <h3>Soluci&oacute;n de Seguridad para tu hogar y negocio</h3>
+        <div class="well col-lg-offset-4 col-lg-4">
+            <legend>Iniciar sesi&oacute;n</legend>
+            <form id="datosUsuario">
+                <fieldset class="herramientas">
+                    <input class="form-control" id="usuario" type="text" placeholder="usuario" required>
+                    <input class="form-control" id="password" type="password" placeholder="Contrase&ntilde;a" required>
+                    <input class="btn btn-primary" type="submit" value="Iniciar sesi&oacute;n">
+                </fieldset>
+            </form>
+            <div class="herramientas">
+                <span>¿No cuenta con un usuario URSA? <a href="dashboard.html">Cree una.</a></span>
+                <a href="#">He olvidado mi contrase&ntilde;a</a>
+                <img src="#" alt="ursa">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

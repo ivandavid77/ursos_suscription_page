@@ -1,0 +1,12 @@
+.no-visible {
+  display: none;
+}
+
+legend {
+  margin-top: 20px;
+}
+
+#indicaciones {
+  border: 1px dashed cornflowerblue;
+  background-color: beige;
+}

@@ -1,0 +1,29 @@
+{
+  "name": "ursos_suscription_page",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ivandavid77/ursos_suscription_page.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ivandavid77/ursos_suscription_page/issues"
+  },
+  "homepage": "https://github.com/ivandavid77/ursos_suscription_page#readme",
+  "dependencies": {
+    "body-parser": "^1.15.1",
+    "crypto": "0.0.3",
+    "express": "^4.13.4",
+    "express-handlebars": "^3.0.0",
+    "express-session": "^1.13.0",
+    "mysql": "^2.11.1",
+    "node-uuid": "^1.4.7",
+    "telegram-node-bot": "^2.1.3"
+  }
+}
