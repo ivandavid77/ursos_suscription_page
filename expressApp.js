@@ -39,12 +39,66 @@ module.exports = function(db, telegram, config) {
     app.use(bodyParser.json());
     app.use(express.static(__dirname + '/public'));
     
-    app.post('/autentificar_usuario', (req, res) => {
+
+    app.post('/autentificar_cliente', function(req, res) {
         var session = req.session;
+        session.cliente = null;
         var usuario = req.body.usuario;
         var password = req.body.password;
-        enviarJSON(res, {autentificado: false});
+        db.autentificarCliente(usuario, password, function(err, cliente) {  
+            var respuesta = {
+                autentificado: false,
+            };
+            if (err) {
+                respuesta.mensaje = err;    
+            } else {
+                respuesta.autentificado = true;
+                session.cliente = cliente;
+            }
+            respuesta.cliente = session.cliente;
+            enviarJSON(res, respuesta);
+        });
     });
+
+    app.get('/obtener_datos_cliente', function(req, res) {
+        var session = req.session;
+        enviarJSON(res, {
+            autentificado: (session.cliente)? true : false,
+            cliente: session.cliente,
+        });
+    });
+
+    app.post('/crear_cliente', function(req, res) {
+        var session = req.session;
+        if ('cliente' in req.body) {
+	        var cliente = req.body.cliente;
+            db.crearCliente(cliente, function(err, id_cliente) {
+                session.cliente = null;
+                if (err) {
+                    enviarJSON(res, {
+                        creado: false,
+                        mensaje: err,
+                    });
+                    return;
+                }
+                db.obtenerCliente(id_cliente, function(err, cliente) {
+                    if (err) {
+                        console.log(err);
+                        enviarJSON(res, {
+                            creado: false,
+                            mensaje: config.GENERIC_ERROR,
+                        });
+                        return;
+                    }
+                    session.cliente = cliente;
+                    enviarJSON(res, {
+                        creado: true,
+                    });
+                });
+            });
+        }
+    });
+    
 
     
     app.use((req, res) => {

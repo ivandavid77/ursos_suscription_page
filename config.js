@@ -7,5 +7,6 @@ module.exports = function() {
         DB_USER : 'richit',
         DB_PASSWORD : '123456',
         DB_NAME : 'ursa_db',
+        GENERIC_ERROR : 'Ha ocurrido un error en la aplicacion, intente nuevamente',
     };
 }

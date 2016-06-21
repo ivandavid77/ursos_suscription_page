@@ -1,6 +1,7 @@
 define([
-    'jquery'
-], function($) {
+    'jquery',
+    'servidor'
+], function($, servidor) {
     $(function() {
         $('#datosUsuario').submit(function(e) {
             e.preventDefault();
@@ -8,11 +9,10 @@ define([
                 usuario: $('#usuario').val(),
                 password: $('#password').val(),
             };
-            console.log(params);
-            $.post('autentificar_usuario', params, function(data) {
+            servidor.autentificarCliente(params, function(data) {
                 if (!data.autentificado) {
                     $('#modalOverlay').show();
-                    $('#modalResult h6').html('Verifique su usuario y su contrase&ntilde;a');
+                    $('#modalResult h6').html(data.mensaje);
                     $('#modalResult').show();
                     return;
                 }

@@ -11,64 +11,65 @@
     <div class="container">
         <div class="well col-lg-offset-1 col-lg-10">
             <p id="indicaciones">Para realizar su registro por favor proporcione los datos que se le solicitan a continuaci&oacute;n</p>
-            <form>
+            <form id="datosCliente">
+                <input type="hidden" id="id_cliente" value="0">
                 <fieldset>
                     <legend>Datos de usuario</legend>
                     <div class="form-group">                        
                         <div class="col-lg-4">
-                            <label for="nombre_propietario">Nombre</label>
-                            <input type="text" id="nombre_propietario" required>
+                            <label class="control-label" for="nombre_propietario">Nombre</label>
+                            <input class="form-control" type="text" id="nombre_propietario" required>
                         </div>
                         <div class="col-lg-4">
-                            <label for="apellido_paterno_propietario">Ap. paterno</label>
-                            <input type="text" id="apellido_paterno_propietario" required>
+                            <label class="control-label" for="apellido_paterno_propietario">Ap. paterno</label>
+                            <input class="form-control" type="text" id="apellido_paterno_propietario" required>
                         </div>
                         <div class="col-lg-4">
-                            <label for="apellido_materno_propietario">Ap. materno</label>
-                            <input type="text" id="apellido_materno_propietario" required>
+                            <label class="control-label" for="apellido_materno_propietario">Ap. materno</label>
+                            <input class="form-control" type="text" id="apellido_materno_propietario" required>
                         </div>
                     </div>
 
                     <legend>Datos del domicilio a proteger</legend>
                     <div class="col-lg-6">
                         <div class="form-group">
-                            <label for="domicilio">Direcci&oacute;n</label>
-                            <textarea id="domicilio" cols="5" required></textarea>
+                            <label class="control-label" for="domicilio">Direcci&oacute;n</label>
+                            <textarea class="form-control" id="domicilio" cols="5" required></textarea>
                         </div>
                         <div class="form-group">
-                            <label for="delegacion">Delegacion</label>
-                            <select id="delegacion" required>
-                                <option value="1">&Aacute;lvaro Obreg&oacute;n</option>
-                                <option value="2">Azcapotzalco</option>
-                                <option value="3">Benito Ju&aacute;rez</option>
-                                <option value="4">Coyoac&aacute;n</option>
-                                <option value="5">Cuajimalpa de Moralos</option>
-                                <option value="6">Cuauht&eacute;moc</option>
-                                <option value="7">Gustavo A. Madero</option>
-                                <option value="8">Iztacalco</option>
-                                <option value="9">Iztapalapa</option>
-                                <option value="10">Magdalena Contreras</option>
-                                <option value="11">Miguel Hidalgo</option>
-                                <option value="12">Milpa Alta</option>
-                                <option value="13">Tl&aacute;huac</option>
-                                <option value="14">Tlalpan</option>
-                                <option value="15">Venustiano Carranza</option>
-                                <option value="16">Xochimilco</option>
+                            <label class="control-label" for="delegacion">Delegacion</label>
+                            <select class="form-control" id="delegacion" required>
+                                <option value="alvaro_obregon">&Aacute;lvaro Obreg&oacute;n</option>
+                                <option value="azcapozalco">Azcapotzalco</option>
+                                <option value="benito_juarez">Benito Ju&aacute;rez</option>
+                                <option value="coyoacan">Coyoac&aacute;n</option>
+                                <option value="cuajimalpa_de_morelos">Cuajimalpa de Morelos</option>
+                                <option value="cuauhtemoc">Cuauht&eacute;moc</option>
+                                <option value="gustavo_a_madero">Gustavo A. Madero</option>
+                                <option value="iztacalco">Iztacalco</option>
+                                <option value="iztapalapa">Iztapalapa</option>
+                                <option value="magdalena_contreras">Magdalena Contreras</option>
+                                <option value="miguel_hidalgo">Miguel Hidalgo</option>
+                                <option value="milpa_alta">Milpa Alta</option>
+                                <option value="tlahuac">Tl&aacute;huac</option>
+                                <option value="tlalpan">Tlalpan</option>
+                                <option value="venustiano_carranza">Venustiano Carranza</option>
+                                <option value="xochimilco">Xochimilco</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="colonia">Colonia</label>
-                            <input type="text" id="colonia" required>
+                            <label class="control-label" for="colonia">Colonia</label>
+                            <input class="form-control" type="text" id="colonia" required>
                         </div>
                     </div>      
                     <div class="col-lg-6">
                         <div class="form-group">
-                            <label for="telefono">Telefono</label>
-                            <input type="tel" id="telefono" required>
+                            <label class="control-label" for="telefono">Telefono</label>
+                            <input class="form-control" type="tel" id="telefono" required>
                         </div>
                         <div class="form-group">
-                            <label for="telefono_en_domicilio">Este telefono se encuentra en el domicilio*</label>
-                            <select id="telefono_en_domicilio" required>
+                            <label class="control-label" for="telefono_en_domicilio">Este telefono se encuentra en el domicilio *</label>
+                            <select class="form-control" id="telefono_en_domicilio" required>
                                 <option value="1">S&iacute;</option>
                                 <option value="0">No</option>
                             </select>
@@ -84,8 +85,8 @@
                     <legend>Tipo de cliente</legend>
                     <div class="col-lg-12">
                         <div class="form-group">
-                            <label for="tipo">El domicilio que deseo proteger es</label>
-                            <select id="tipo" required>
+                            <label class="control-label" for="tipo">El domicilio que deseo proteger es</label>
+                            <select class="form-control" id="tipo" required>
                                 <option value="PARTICULAR">Una casa particular</option>
                                 <option value="EMPRESA">Un local comercial</option>
                             </select>
@@ -96,39 +97,59 @@
                         <legend>Datos del local comercial</legend>
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label for="nombre_establecimiento">Nombre</label>
-                                <input type="text" id="nombre_establecimiento">
+                                <label class="control-label" for="nombre_establecimiento">Nombre</label>
+                                <input class="form-control" type="text" id="nombre_establecimiento">
                             </div>
                             <div class="form-group">
-                                <label for="nombre_encargado">Encargado</label>
-                                <input type="text" id="nombre_encargado">
+                                <label class="control-label" for="nombre_encargado">Encargado</label>
+                                <input class="form-control" type="text" id="nombre_encargado">
                             </div>
                         </div>
+                    </div>
+
+                    <legend>N&uacute;mero de serie de ruteadores</legend>
+                    <div class="col-lg-12">
+                        <textarea class="form-control aviso" rows="2">
+El n&uacute;mero de serie proporcionado debe escribirse tal y como aparece en la caja, ejemplo: WAKM-1212-ABC3
+En caso de solo contar con mas de un ruteador de clic en el bot&oacute;n "Agregar"
+                        </textarea>
+                        <div id="ruteadores">
+                            <input class="form-control" placeholder="Ejemplo: WAKM-1212-ABC3" type="text" maxlength="14" required>
+                        </div>
+                        <center>
+                            <input type="button" class="btn btn-primary" id="agregarRouter" value="Agregar otro router">
+                        </center>
                     </div>
 
                     <legend>Datos de usuario</legend>
                     <div class="col-lg-12">
                         <div class="form-group">
-                            <label id="usuario">Usuario</label>
-                            <input type="text" id="usuario" required>
-                            <input type="button" id="verificar_usuario" value="Verificar disponibilidad">
+                            <label class="control-label" for="usuario">Usuario</label>
+                            <input class="form-control" type="text" id="usuario" required>
                         </div>
                         <div class="form-group">
-                            <label id="password">Contrase&ntilde;a</label>
-                            <input type="password" id="password" required>
+                            <label class="control-label" for="password">Contrase&ntilde;a</label>
+                            <input class="form-control" type="password" id="password" required>
                         </div>
                         <div class="form-group">
-                            <label id="pregunta_secreta">Pregunta secreta</label>
-                            <input type="text" id="pregunta_secreta" required>
+                            <label class="control-label" for="palabra_secreta">Palabra clave para confirmaciones del C5 ***</label>
+                            <input class="form-control" type="text" id="palabra_secreta" required>
                         </div>
                         <div class="form-group">
-                            <label id="respuesta_secreta">Respuesta</label>
-                            <input type="text" id="respuesta_secreta" required>
+                            <label class="control-label" for="pregunta_secreta">Pregunta secreta ****</label>
+                            <input class="form-control" type="text" id="pregunta_secreta" required>
                         </div>
+                        <div class="form-group">
+                            <label class="control-label" for="respuesta_pregunta_secreta">Respuesta</label>
+                            <input class="form-control" type="text" id="respuesta_pregunta_secreta" required>
+                        </div>
+                        
                         <div class="form-group">
                             <p>
-                                La pregunta secreta se utiliza para recuperar su cuenta
-                                en caso de que olvide su contrase&ntilde;a
+                                (***)  La palabra clave se utiliza por el operador del C5 para
+                                confirmar si la alarma fu&eacute; activada de forma accidental.
+                                (****) La pregunta secreta se utiliza para recuperar su cuenta
+                                en caso de que olvide su contrase&ntilde;a.
                             </p>
                         </div>
                     </div>
@@ -141,18 +162,18 @@
                                 la aplicaci&oacute;n <a target="_blank" href="https://telegram.org/">Telegram</a>
                                 porteriormente debera agregar al usuario 
                                 <a target="_blank" href="https://telegram.me/ursa_user_bot">@ursa_user_bot</a>,
-                                este usuario le indicar&aacute; un c&oacute;digo el cual debe 
+                                este usuario le indicar&aacute; un c&oacute;digo el cual debe
                                 escribir a continuaci&oacute;n
                             </p>
                         </div>
                         <div class="form-group">
-                            <label for="input">C&oacute;digo</label>
-                            <input type="text" placeholder="Ejemplo: 204146908">
+                            <label class="control-label" for="input">C&oacute;digo</label>
+                            <input class="form-control" id="id_telegram_propietario" type="text" placeholder="Ejemplo: 204146908">
                         </div>
                     </div>
                 </fieldset>
                 <center>
-                    <input type="button" class="btn btn-primary" value="Registrar mis datos">
+                    <input id="enviarDatos" type="submit" class="btn btn-primary" value="Registrar mis datos">
                 </center>
             </form>
         </div>

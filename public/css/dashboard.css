@@ -10,3 +10,14 @@ legend {
   border: 1px dashed cornflowerblue;
   background-color: beige;
 }
+
+.aviso {
+  font-family:  'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 12px;
+  border: 1px dashed darkblue;
+  background-color: beige;
+  border-radius: 2%;
+  overflow: hidden;
+}
+
+
