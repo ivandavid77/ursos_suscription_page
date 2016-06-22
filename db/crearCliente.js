@@ -22,20 +22,32 @@ function clienteValido(cliente, callback) {
     } else if (cliente.tipo == 'EMPRESA' && ( !('nombre_encargado' in cliente) || !('nombre_establecimiento' in cliente) ) ) {
         callback('Verifique que los datos esten correctos');
         return false;
-    } else if (!('ruteadores' in cliente) || 
-        !Array.isArray(cliente.ruteadores) || 
-        cliente.ruteadores.length == 0 ||
-        (cliente.ruteadores.length == 1 && cliente.ruteadores[0] == '') 
-        ) {
+    } else if (!('ruteadores' in cliente) || !Array.isArray(cliente.ruteadores)) { 
         callback('Debe indicar los ruteadores que posee');
         return false;
+    } else {
+        cliente.ruteadores = cliente.ruteadores.filter(function(ruteador) {
+            ruteador = ruteador.trim();
+            if (ruteador == '') { 
+                return false;
+            } else { 
+                return true;
+            }
+        });
+        cliente.ruteadores = cliente.ruteadores.reduce(function(acc, ruteador) {
+            if (!acc.some(function(elem_on_acc) { return elem_on_acc == ruteador; }))
+                acc.push(ruteador);
+            return acc;
+        }, []);
+        if (cliente.ruteadores.length == 0) {
+            callback('Debe indicar los ruteadores que posee');
+            return false;
+        }
     }
-
     if (cliente.tipo == 'PARTICULAR') {
         cliente.nombre_encargado = null;
         cliente.nombre_establecimiento = null;
     }
-
     if (cliente.id_telegram_propietario == '') {
         cliente.id_telegram_propietario = 0;
     }
@@ -55,14 +67,14 @@ module.exports = function(pool, config) {
             }
             // Los ruteadores deben estar dados de alta
             var ruteadores = '';
-            cliente.ruteadores = cliente.ruteadores.map(function(numeroSerie) {
-                return conn.escape(numeroSerie);
+            cliente.ruteadores = cliente.ruteadores.map(function(ruteador) {
+                return conn.escape(ruteador);
             });
-            cliente.ruteadores.forEach(function(numeroSerie) {
+            cliente.ruteadores.forEach(function(ruteador) {
                 if (ruteadores == '') {
-                    ruteadores = numeroSerie;
+                    ruteadores = ruteador;
                 } else {
-                    ruteadores = ruteadores + ',' + numeroSerie;
+                    ruteadores = ruteadores + ',' + ruteador;
                 }
             });
             conn.query(`
@@ -160,11 +172,11 @@ module.exports = function(pool, config) {
                                         }
                                         var id_cliente = result.insertId;
                                         var tmp = '';
-                                        cliente.ruteadores.forEach(function(numeroSerie) {
+                                        cliente.ruteadores.forEach(function(ruteador) {
                                             if (tmp == '') {
-                                                tmp = `(${id_cliente}, ${numeroSerie})`;
+                                                tmp = `(${id_cliente}, ${ruteador})`;
                                             } else {
-                                                tmp = tmp + `,(${id_cliente}, ${numeroSerie})`;
+                                                tmp = tmp + `,(${id_cliente}, ${ruteador})`;
                                             }
                                         });
                                         conn.query(`INSERT INTO ruteadores_cliente (id_cliente, serie_ruteador) VALUES ${tmp}`,

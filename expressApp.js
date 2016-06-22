@@ -70,33 +70,65 @@ module.exports = function(db, telegram, config) {
 
     app.post('/crear_cliente', function(req, res) {
         var session = req.session;
-        if ('cliente' in req.body) {
-	        var cliente = req.body.cliente;
-            db.crearCliente(cliente, function(err, id_cliente) {
-                session.cliente = null;
+        if (!('cliente' in req.body)) {
+            return;
+        }
+        var cliente = req.body.cliente;
+        db.crearCliente(cliente, function(err, id_cliente) {
+            session.cliente = null;
+            if (err) {
+                enviarJSON(res, {
+                    creado: false,
+                    mensaje: err,
+                });
+                return;
+            }
+            db.obtenerCliente(id_cliente, function(err, cliente) {
                 if (err) {
+                    console.log(err);
                     enviarJSON(res, {
                         creado: false,
-                        mensaje: err,
+                        mensaje: config.GENERIC_ERROR,
                     });
                     return;
                 }
-                db.obtenerCliente(id_cliente, function(err, cliente) {
-                    if (err) {
-                        console.log(err);
-                        enviarJSON(res, {
-                            creado: false,
-                            mensaje: config.GENERIC_ERROR,
-                        });
-                        return;
-                    }
-                    session.cliente = cliente;
-                    enviarJSON(res, {
-                        creado: true,
-                    });
+                session.cliente = cliente;
+                enviarJSON(res, {
+                    creado: true,
                 });
             });
+        });
+    });
+
+    app.post('/actualizar_cliente', function(req, res) {
+        var session = req.session;
+        if (!('cliente' in req.body)) {
+            return;
         }
+        var cliente = req.body.cliente;
+        db.actualizarCliente(session.cliente.id_cliente, cliente, function(err) {
+            if (err) {
+                enviarJSON(res, {
+                    actualizado: false,
+                    mensaje: err,
+                });
+                return;
+            }
+            db.obtenerCliente(session.cliente.id_cliente, function(err, cliente) {
+                if (err) {
+                    console.log(err);
+                    enviarJSON(res, {
+                        actualizado: false,
+                        mensaje: config.GENERIC_ERROR,
+                    });
+                    return;
+                }
+                session.cliente = cliente;
+                enviarJSON(res, {
+                    actualizado: true,
+                });
+            });
+        });
     });
     
 

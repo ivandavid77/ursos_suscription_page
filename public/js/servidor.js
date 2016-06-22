@@ -21,10 +21,21 @@ define('servidor', [
         });
     }
 
+    function actualizarCliente(params, callback) {
+        return $.ajax({
+            type: 'POST',
+            data: JSON.stringify(params),
+            contentType: 'application/json',
+            url: 'actualizar_cliente',
+            complete: function(data) {callback(data.responseJSON);}
+        });
+    }
+
     var externalAPI = {
         autentificarCliente : autentificarCliente,
         obtenerDatosCliente : obtenerDatosCliente,
         crearCliente : crearCliente,
+        actualizarCliente: actualizarCliente,
         promise : {
                
         }

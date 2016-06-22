@@ -42,7 +42,41 @@ define([
     }
 
     function actualizar() {
-        
+        var cliente = {
+            password: $('#password').val().trim(),
+            domicilio: $('#domicilio').val(),
+            colonia: $('#colonia').val(),
+            delegacion: $('#delegacion').val(),
+            telefono: $('#telefono').val(),
+            telefono_en_domicilio: $('#telefono_en_domicilio').val(),
+            tipo: $('#tipo').val(),
+            apellido_paterno_propietario: $('#apellido_paterno_propietario').val(),
+            apellido_materno_propietario: $('#apellido_materno_propietario').val(),
+            nombre_propietario: $('#nombre_propietario').val(),
+            id_telegram_propietario: $('#id_telegram_propietario').val().trim(),          
+            palabra_secreta: $('#palabra_secreta').val(), 
+            pregunta_secreta: $('#pregunta_secreta').val(),
+            respuesta_pregunta_secreta: $('#respuesta_pregunta_secreta').val(), 
+        };
+        if (cliente.tipo == 'EMPRESA') {
+            cliente.nombre_encargado = $('#nombre_encargado').val();
+            cliente.nombre_establecimiento = $('#nombre_establecimiento').val();
+        } 
+        if (cliente.id_telegram_propietario == '') {
+            cliente.id_telegram_propietario = 0;
+        }
+        var tmp = [];
+        $('#ruteadores input').each(function(router) {
+            tmp.push(this.value);
+        });
+        cliente.ruteadores = tmp;
+        servidor.actualizarCliente({cliente: cliente}, function(data) {
+            if (!data.actualizado) {
+                alert(data.mensaje);
+                return;
+            }
+            alert('Datos actualizados correctamente');
+        });
     }
 
     function crearNombreUsuario() {

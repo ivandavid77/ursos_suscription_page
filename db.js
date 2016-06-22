@@ -12,6 +12,7 @@ module.exports = function(config) {
         autentificarCliente: require('./db/autentificarCliente.js')(pool, config),
         crearCliente: require('./db/crearCliente.js')(pool, config),
         obtenerCliente: require('./db/obtenerCliente.js')(pool, config),
+        actualizarCliente: require('./db/actualizarCliente.js')(pool, config),
     };
 
     return externalAPI;
