@@ -137,7 +137,7 @@ define([
                 tmp = tmp + `<input class="form-control" placeholder="Ejemplo: WAKM-1212-ABC3" type="text" maxlength="14" value="${ruteador}">`;
             });
             $('#ruteadores').html(tmp);
-            $('#enviarDatos').val('Actualizar datos');
+            $('#enviarDatos').val('Actualizar mis datos');
             submitHandler = actualizar;
         } else {            
             $('#indicaciones').show();
@@ -182,7 +182,7 @@ define([
             $('#pregunta_secreta').val('');
             $('#respuesta_pregunta_secreta').val('');
             $('#ruteadores').html('<input class="form-control" placeholder="Ejemplo: WAKM-1212-ABC3" type="text" maxlength="14">');
-            $('#enviarDatos').val('Enviar datos');
+            $('#enviarDatos').val('Registrar mis datos');
             submitHandler = crear;
         }
 
