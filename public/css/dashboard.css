@@ -8,6 +8,20 @@
   opacity: 0.8;
   z-index: 3;
 }
+body {
+    background-image: url("../images/fondo_azul.jpg");
+}
+
+.fixed {
+  position: fixed;
+  left: 0px;
+  height: 100%;
+  background-image: url("../images/fondo_oscuro.jpg");
+}
+
+.fixed img {
+  margin-top: 50%;
+}
 
 #modalResult {
   position: fixed;

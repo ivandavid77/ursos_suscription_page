@@ -72,10 +72,14 @@ define([
         cliente.ruteadores = tmp;
         servidor.actualizarCliente({cliente: cliente}, function(data) {
             if (!data.actualizado) {
-                alert(data.mensaje);
+                $('#modalOverlay').show();
+                $('#modalResult h6').html(data.mensaje);
+                $('#modalResult').show();
                 return;
             }
-            alert('Datos actualizados correctamente');
+            $('#modalOverlay').show();
+            $('#modalResult h6').html('Datos actualizados correctamente');
+            $('#modalResult').show();
         });
     }
 

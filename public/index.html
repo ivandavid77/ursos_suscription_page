@@ -10,28 +10,38 @@
 <body>
     <div id="modalOverlay" class="no-visible"></div>
     <div id="modalResult" class="no-visible">
-    <center>
-        <h6></h6>
-        <input id="modalResultButton" type="button" value="Aceptar">
-    </center>
+        <center>
+            <h6></h6>
+            <input id="modalResultButton" type="button" value="Aceptar">
+        </center>
     </div>
 
     <div class="container">
-        <h1>URSA</h1>
-        <h3>Soluci&oacute;n de Seguridad para tu hogar y negocio</h3>
         <div class="well col-lg-offset-4 col-lg-4">
+            <div class="logo">
+                <img src="images/logo.png"><br>
+                <h3>Soluci&oacute;n de Seguridad para tu hogar y negocio</h3>
+            </div>
+            <br>
             <legend>Iniciar sesi&oacute;n</legend>
             <form id="datosUsuario">
-                <fieldset class="herramientas">
+                <fieldset>
                     <input class="form-control" id="usuario" type="text" placeholder="usuario" required>
+                    <br>
                     <input class="form-control" id="password" type="password" placeholder="Contrase&ntilde;a" required>
-                    <input class="btn btn-primary" type="submit" value="Iniciar sesi&oacute;n">
+                    <br>
+                    <center>
+                        <input class="btn btn-primary" type="submit" value="Iniciar sesi&oacute;n">
+                    </center>
                 </fieldset>
             </form>
             <div class="herramientas">
                 <span>¿No cuenta con un usuario URSA? <a href="dashboard.html">Cree una.</a></span>
                 <a href="#">He olvidado mi contrase&ntilde;a</a>
-                <img src="#" alt="ursa">
+                <br>
+                <center>
+                    <img src="images/ursa.png" alt="ursa">
+                </center>
             </div>
         </div>
     </div>
