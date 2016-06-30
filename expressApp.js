@@ -37,8 +37,11 @@ module.exports = function(db, telegram, config) {
     );
     app.use(bodyParser.urlencoded( { extended: false } ));
     app.use(bodyParser.json());
-    app.use(express.static(__dirname + '/public'));
-    
+    //app.use(express.static(__dirname + '/public'));
+
+    app.get('/', function(req, res) {
+        res.redirect('/index.html');
+    });   
 
     app.post('/autentificar_cliente', function(req, res) {
         var session = req.session;
